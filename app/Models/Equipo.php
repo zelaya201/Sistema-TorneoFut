@@ -11,11 +11,23 @@ class Equipo extends Model
 
     public $timestamps = false;
 
-    protected $table = 'torneos';
+    protected $table = 'equipos';
 
     protected $fillable = [
         'nombre',
         'escudo',
         'estado',
     ];
+
+    public function torneoEquipos() {
+        return $this->hasMany(TorneoEquipo::class, 'id_equipo');
+    }
+
+    public function jugadores() {
+        return $this->hasMany(Jugador::class, 'id_equipo');
+    }
+
+    public function partidos() {
+        return $this->hasMany(Partido::class);
+    }
 }

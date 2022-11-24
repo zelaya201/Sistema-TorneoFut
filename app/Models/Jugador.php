@@ -22,4 +22,16 @@ class Jugador extends Model
         'id_posicion',
         'id_equipo',
     ];
+
+    public function equipo() {
+        return $this->belongsTo(Equipo::class, 'id_equipo');
+    }
+
+    public function posicion(){
+        return $this->belongsTo(Posicion::class, 'id_posicion');
+    }
+
+    public function goles() {
+        return $this->hasMany(GolesPartido::class);
+    }
 }

@@ -17,4 +17,12 @@ class TorneoEquipo extends Model
         'id_torneo',
         'id_equipo',
     ];
+
+    public function equipo() {
+        return $this->belongsTo(Equipo::class, 'id_equipo');
+    }
+
+    public function torneo() {
+        return $this->belongsTo(Torneo::class, 'id_torneo');
+    }
 }

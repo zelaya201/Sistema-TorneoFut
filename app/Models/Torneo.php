@@ -18,4 +18,12 @@ class Torneo extends Model
         'estado',
         'id_organizador',
     ];
+
+    public function organizador() {
+        return $this->belongsTo(Organizador::class, 'id_organizador');
+    }
+
+    public function torneoEquipos() {
+        return $this->hasMany(TorneoEquipo::class, 'id_torneo');
+    }
 }

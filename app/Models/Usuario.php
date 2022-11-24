@@ -23,4 +23,7 @@ class Usuario extends Authenticatable
         'password',
     ];
 
+    public function organizador() {
+        return $this->belongsTo(Organizador::class, 'id_organizador');
+    }
 }

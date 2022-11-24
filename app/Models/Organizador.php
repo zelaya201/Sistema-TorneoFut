@@ -10,6 +10,7 @@ class Organizador extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $table = 'organizadores';
     protected $fillable = [
         'nombre',
         'apellido',
@@ -18,4 +19,8 @@ class Organizador extends Model
         'telefono',
         'email',
     ];
+
+    public function usuarios() {
+        return $this->hasMany(Usuario::class, 'id_organizador');
+    }
 }

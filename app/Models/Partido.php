@@ -22,4 +22,20 @@ class Partido extends Model
         'estado',
         'id_jornada'
     ];
+
+    public function equipoLocal() {
+        return $this->belongsTo(Equipo::class, 'equipo_local');
+    }
+
+    public function equipoVisitante() {
+        return $this->belongsTo(Equipo::class, 'equipo_visitante');
+    }
+
+    public function jornada() {
+        return $this->belongsTo(Jornada::class, 'id_jornada');
+    }
+
+    public function goles() {
+        return $this->hasMany(GolesPartido::class);
+    }
 }

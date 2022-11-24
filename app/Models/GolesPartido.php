@@ -18,4 +18,12 @@ class GolesPartido extends Model
         'id_jugador',
         'minuto',
     ];
+
+    public function jugador(){
+        return $this->belongsTo(Jugador::class, 'id_jugador');
+    }
+
+    public function partido(){
+        return $this->belongsTo(Partido::class, 'id_partido');
+    }
 }

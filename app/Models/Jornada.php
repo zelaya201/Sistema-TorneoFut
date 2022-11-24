@@ -18,4 +18,8 @@ class Jornada extends Model
         'fecha_inicio',
         'fecha_fin',
     ];
+
+    public function partidos() {
+        return $this->hasMany(Partido::class);
+    }
 }

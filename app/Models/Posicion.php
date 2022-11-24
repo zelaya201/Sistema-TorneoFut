@@ -16,4 +16,8 @@ class Posicion extends Model
     protected $fillable = [
         'nombre',
     ];
+
+    public function jugadores() {
+        return $this->hasMany(Jugador::class, 'id_equipo');
+    }
 }
