@@ -123,7 +123,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 >
-                <span class="text-light">Bienvenido, </span> <b class="text-light">&nbsp{{ auth()->user()->nickname }}</b>
+                <span class="text-light">Bienvenido, </span> <b class="text-light">&nbsp{{ auth()->user()->organizador->nombre }}</b>
               </a>
               <ul
                   class="dropdown-menu dropdown-menu-end"
