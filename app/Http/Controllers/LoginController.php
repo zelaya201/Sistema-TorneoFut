@@ -24,7 +24,7 @@ class LoginController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
-            return redirect('/home');
+            return redirect('/Inicio');
         }
         
         /* $credenciales = $request->getCredenciales();
@@ -43,6 +43,6 @@ class LoginController extends Controller
     }
 
     public function authenticated(Request $request, $usuario) {
-        return redirect('/home');
+        return redirect('/Inicio');
     }
 }

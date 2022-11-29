@@ -4,55 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('favicon (2).ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon (2).ico') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>@yield('titulo') | Asociación de Fútbol de Lisiados</title>
-  <style>
-    body {
-      background-color: #fbfbfb;
-    }
-    
-    @media (min-width: 991.98px) {
-      main {
-        padding-left: 240px;
-      }
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      padding: 50px 0 0; /* Height of navbar 58 default*/
-      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-      width: 240px;
-      z-index: 600;
-    }
-
-    @media (max-width: 991.98px) {
-      .sidebar {
-        width: 100%;
-      }
-    }
-    .sidebar .active {
-      background-color: #212529;
-      border-color: #ffe418;
-      font-weight: bold;
-      /* border-radius: 5px;
-      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%); */
-    }
-
-    .sidebar-sticky {
-      position: relative;
-      top: 0;
-      height: calc(100vh - 48px);
-      padding-top: 0.5rem;
-      overflow-x: hidden;
-      overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    }
-  </style>
   </head>
   <body>
     <!--Main Navigation-->
@@ -61,10 +19,10 @@
       <nav id="sidebarMenu" class="collapse d-lg-block navbar-dark bg-dark sidebar collapse ">
         <div class="position-sticky">
           <div class="list-group list-group-flush mx-3 mt-4 bg-dark">
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple active" >
+            <a href="/Inicio" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light {{ Request::is('Inicio') ? 'active' : '' }}" >
               <i class="fas fa-house fa-fw me-3"></i><span>Inicio</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" >
+            <a href="/Torneos" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('Torneos') || Request::is('Torneos/Nuevo-torneo') ? 'active' : 'bg-dark text-light' }}" >
               <i class="fas fa-trophy fa-fw me-3"></i><span>Torneos</span>
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" aria-current="true">
@@ -78,9 +36,6 @@
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
               <i class="fas fa-chart-pie fa-fw me-3"></i><span>Estadísticas</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
-              <i class="fas fa-users fa-fw me-3"></i><span>Organizadores</span>
             </a>
           </div>
         </div>
@@ -105,7 +60,7 @@
           </button>
 
           <!-- Brand -->
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{{route('home')}}">
             <!-- <img src="{{ asset('img/balon-fut.png') }}" width="15" alt="" loading="lazy"/> -->
             <i class="fa-solid fa-futbol"></i><span class="navbar-brand mb-0 h1">&nbsp;Asociación de Futbol de Lisiados</span>
           </a>
