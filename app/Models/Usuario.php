@@ -26,4 +26,8 @@ class Usuario extends Authenticatable
     public function organizador() {
         return $this->belongsTo(Organizador::class, 'id_organizador');
     }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

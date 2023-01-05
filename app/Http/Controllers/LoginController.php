@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //
-
     public function show() {
         return view('auth.login');
     }
@@ -24,22 +22,10 @@ class LoginController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
+            toastr()->info('Que disfrutes del sistema.','¡Bienvenido/a, '. $user->organizador->nombre . '!') ;
+
             return redirect('/Inicio');
         }
-        
-        /* $credenciales = $request->getCredenciales();
-
-        dd($credenciales);
-
-        if (!Auth::validate($credenciales)) {
-            return redirect()->to('/login')->withErrors('auth.failed');
-        }
-
-        $usuario = Auth::getProvider()->retrieveByCredentials($credenciales);
-
-        Auth::login($usuario);
-
-        return $this->authenticated($request, $usuario); */
     }
 
     public function authenticated(Request $request, $usuario) {

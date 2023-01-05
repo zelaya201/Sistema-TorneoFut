@@ -10,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script src="{{asset('js/input-mask.js')}}"></script> 
+    <link rel="stylesheet" href="{{asset('css/show-password-toggle.min.css')}}">
     <title>@yield('titulo') | Asociación de Fútbol de Lisiados</title>
   </head>
   <body>
@@ -78,13 +82,15 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 >
-                <span class="text-light">Bienvenido, </span> <b class="text-light">&nbsp{{ auth()->user()->organizador->nombre }}</b>
+                <span class="text-light">Bienvenido/a, </span> <b class="text-light">&nbsp{{ auth()->user()->organizador->nombre }}</b>
+                
+                @php($user = auth()->user())
               </a>
               <ul
                   class="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdownMenuLink"
                   >
-                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#configModal{{$user->organizador->id}}">Configuración</a></li>
                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
               </ul>
             </li>
@@ -103,6 +109,7 @@
         @yield('content')
       </div>
     </main>
-    
+    @include('layouts.modal.configModal')
   </body>
+  
 </html>

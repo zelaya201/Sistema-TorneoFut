@@ -11,6 +11,7 @@
         font-size: 3.5rem;
     }
 }
+
 html,
 body {
     height: 100%;
@@ -29,22 +30,21 @@ body {
 
 .form-signin {
     width: 100%;
-    max-width: 330px;
     padding: 15px;
-    margin: 425px;
 }
 
 .form-signin .form-floating:focus-within {
     z-index: 2;
 }
 
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
+.form-signin-text {
+    margin-bottom: 0px;
+    border-bottom: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signin-pass {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
