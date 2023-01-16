@@ -36,10 +36,10 @@ Route::post('/Registrarse', [RegisterController::class, 'register']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/Inicio', [HomeController::class, 'show'])->middleware('auth')->name('home');
+Route::get('/Inicio/{torneo}', [HomeController::class, 'show'])->middleware('auth')->name('home');
 
 /* Rutas Config Usuario */
-Route::put('/Inicio/{usuario}', [UsuarioController::class, 'update'])->middleware('auth')->name('usuario.update');
+Route::put('/Inicio/{usuario}/{url}', [UsuarioController::class, 'update'])->middleware('auth')->name('usuario.update');
 
 /* Rutas torneo */
 Route::get('/Torneos', [TorneoController::class, 'index'])->middleware('auth')->name('torneo.index');

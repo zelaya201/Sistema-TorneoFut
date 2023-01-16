@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Equipo;
 use App\Models\Torneo;
+use App\Models\TorneoEquipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class TorneoController extends Controller
 {
@@ -16,8 +20,9 @@ class TorneoController extends Controller
     public function index()
     {
         $torneos = Torneo::paginate();
+        $equipos = Equipo::all();
      //   return $torneos;
-        return view('torneo.torneo', compact('torneos'));
+        return view('torneo.torneo', compact('torneos', 'equipos'));
     }
 
     /**
@@ -40,12 +45,29 @@ class TorneoController extends Controller
     {
         $torneo = new Torneo();
         $torneo->nombre = $request->nomTorneo;
-        $torneo->estado = $request->estadoTorneo;
-        $torneo->id_organizador = auth()->user()->organizador->id;
-
+        $torneo->estado = 1;
+        $torneo->id_organizador = auth()->user()->organizador->id; 
+        
         $torneo->save();
+       
 
-        return redirect()->route('torneo.index');
+        if(!empty($request->equipos)) {
+
+            foreach ($request->equipos as $key) {
+                $equipo = DB::table('equipos')->where('nombre', $key)->first();
+
+                $torneoEquipo = new TorneoEquipo();
+                $torneoEquipo->id_equipo = $equipo->id;
+                $torneoEquipo->id_torneo = $torneo->id;
+
+                $torneoEquipo->save();
+            }
+           
+        }
+
+        toastr()->success('El torneo ha sido almacenado correctamente. ¡A jugar!.', 'Torneo creado con éxito') ;
+
+        return redirect()->route('torneo.index'); 
     }
 
     /**

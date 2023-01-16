@@ -69,7 +69,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, Usuario $usuario, $url)
     {
         /* Obteniendo datos para el usuario */
         $usuario->nickname = $request->usuario;
@@ -94,7 +94,7 @@ class UsuarioController extends Controller
 
         toastr()->success('El usuario ha sido modificado correctamente.', 'Usuario actualizado con éxito') ;
 
-        return redirect('/Inicio');
+        return redirect('/'.$url);
     }
 
     /**

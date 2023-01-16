@@ -24,11 +24,11 @@ class LoginController extends Controller
 
             toastr()->info('Que disfrutes del sistema.','¡Bienvenido/a, '. $user->organizador->nombre . '!') ;
 
-            return redirect('/Inicio');
+            return redirect('/Torneos');
         }
     }
 
     public function authenticated(Request $request, $usuario) {
-        return redirect('/Inicio');
+        return redirect('/Torneos');
     }
 }

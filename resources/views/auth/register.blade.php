@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/show-password-toggle.min.css')}}">
   </head>
   <body class="text-center">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6 mx-auto">
         <main class="form-register">
             <div class="card">
                 <div class="row">
@@ -120,7 +119,6 @@
             </div>
         </main>
     </div>
-    <div class="col-md-5"></div>
   </body>
   <script src="{{asset('js/show-password-toggle.min.js')}}"></script> 
   

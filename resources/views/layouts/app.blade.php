@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     <script src="{{asset('js/input-mask.js')}}"></script> 
+    <script src="{{asset('js/limpiarModal.js')}}"></script> 
     <link rel="stylesheet" href="{{asset('css/show-password-toggle.min.css')}}">
     <title>@yield('titulo') | Asociación de Fútbol de Lisiados</title>
   </head>
@@ -23,11 +24,11 @@
       <nav id="sidebarMenu" class="collapse d-lg-block navbar-dark bg-dark sidebar collapse ">
         <div class="position-sticky">
           <div class="list-group list-group-flush mx-3 mt-4 bg-dark">
+            <li class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" >
+              <i class="fa-solid fa-trophy text-warning me-3"></i><span><b>{{$torneo->nombre}}</b></span> 
+            </li>
             <a href="/Inicio" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light {{ Request::is('Inicio') ? 'active' : '' }}" >
               <i class="fas fa-house fa-fw me-3"></i><span>Inicio</span>
-            </a>
-            <a href="/Torneos" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('Torneos') || Request::is('Torneos/Nuevo-torneo') ? 'active' : 'bg-dark text-light' }}" >
-              <i class="fas fa-trophy fa-fw me-3"></i><span>Torneos</span>
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" aria-current="true">
               <i class="fas fa-people-group fa-fw me-3"></i><span>Equipos</span>
@@ -40,6 +41,9 @@
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
               <i class="fas fa-chart-pie fa-fw me-3"></i><span>Estadísticas</span>
+            </a>
+            <a href="{{route('torneo.index')}}" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
+              <i class="fa-sharp fa-solid fa-chevron-left me-3"></i><span>Mis torneos</span>
             </a>
           </div>
         </div>
@@ -64,7 +68,7 @@
           </button>
 
           <!-- Brand -->
-          <a class="navbar-brand" href="{{route('home')}}">
+          <a class="navbar-brand" href="#">
             <!-- <img src="{{ asset('img/balon-fut.png') }}" width="15" alt="" loading="lazy"/> -->
             <i class="fa-solid fa-futbol"></i><span class="navbar-brand mb-0 h1">&nbsp;Asociación de Futbol de Lisiados</span>
           </a>
@@ -103,7 +107,7 @@
     <!--Main Navigation-->
 
     <!--Main layout-->
-    <main style="margin-top: 58px">
+    <main class="mt-5 pt-2">
       <div class="container pt-4">
         <!--Main layout-->
         @yield('content')

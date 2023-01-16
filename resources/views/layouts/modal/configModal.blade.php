@@ -2,7 +2,7 @@
 <div class="modal fade" id="configModal{{$user->organizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <form method="POST" action="{{ route('usuario.update', $user) }}">
+            <form method="POST" action="{{ route('usuario.update', [$user, Request::path()]) }}">
                 @csrf
                 @method('put')
                 <div class="modal-header">
@@ -93,7 +93,7 @@
 
                 <div class="modal-footer">
                     <div class="col-md-8 align-self-start">
-                        <button type="button" class="btn btn-danger"><b>Eliminar usuario</b></button>
+                        <button type="button" class="btn btn-danger"><b>Dar de baja al usuario</b></button>
                     </div>
                     <div class="col align-self-end">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
