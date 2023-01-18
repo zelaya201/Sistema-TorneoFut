@@ -1,12 +1,12 @@
 <!-- Modal configuracion -->
-<div class="modal fade" id="configModal{{$user->organizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="configModal{{$user->organizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <form method="POST" action="{{ route('usuario.update', [$user, Request::path()]) }}">
                 @csrf
                 @method('put')
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Configuración del usuario</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar dar de baja</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -93,7 +93,7 @@
 
                 <div class="modal-footer">
                     <div class="col-md-8 align-self-start">
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#downUserModal{{$user->id}}"><b>Dar de baja al usuario</b></button>
+                        <button type="button" class="btn btn-danger"><b>Dar de baja al usuario</b></button>
                     </div>
                     <div class="col align-self-end">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -104,7 +104,7 @@
         </div>
     </div>
 </div>
-@include('layouts.modal.downUserModal');
+
 <script>
     function switched(){
         var checkBox = document.getElementById("switchInput");
@@ -119,4 +119,37 @@
             input.classList.add('d-none');
         }
     }
-</script>
+</script> -->
+<div class="modal fade" id="downUserModal{{$user->id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 750px;">
+        <div class="modal-content">
+            <form action="{{ route('usuario.destroy', $user) }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-2">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11 ms-5">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h1>
+                                        <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+                                    </h1>
+                                </div>
+                                <div class="col-md-10 ms-3 mt-2">
+                                    <h5>¿Estás seguro que deseas dar de baja al usuario <b>{{$user->nickname}}</b>?</h5>
+                                    <h6 class="text-danger">Ten en cuenta que este proceso no puede ser deshecho.</h6>    
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger"><b>Dar de baja</b></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

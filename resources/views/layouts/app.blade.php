@@ -27,13 +27,13 @@
             <li class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" >
               <i class="fa-solid fa-trophy text-warning me-3"></i><span><b>{{$torneo->nombre}}</b></span> 
             </li>
-            <a href="/Inicio" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light {{ Request::is('Inicio') ? 'active' : '' }}" >
+            <a href="{{route('home', $torneo)}}" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light {{ Request::is('Inicio') ? 'active' : '' }}" >
               <i class="fas fa-house fa-fw me-3"></i><span>Inicio</span>
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light" aria-current="true">
               <i class="fas fa-people-group fa-fw me-3"></i><span>Equipos</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
+            <a href="{{route('jornadas.index', $torneo)}}" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">
               <i class="fas fa-calendar-days fa-fw me-3"></i><span>Jornadas</span>
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark text-light">

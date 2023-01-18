@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JornadasController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TorneoController;
 use App\Http\Controllers\UsuarioController;
@@ -36,10 +37,12 @@ Route::post('/Registrarse', [RegisterController::class, 'register']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/Inicio/{torneo}', [HomeController::class, 'show'])->middleware('auth')->name('home');
+Route::get('{torneo}/Inicio', [HomeController::class, 'show'])->middleware('auth')->name('home');
 
 /* Rutas Config Usuario */
 Route::put('/Inicio/{usuario}/{url}', [UsuarioController::class, 'update'])->middleware('auth')->name('usuario.update');
+
+Route::post('/Inicio/{usuario}', [UsuarioController::class, 'destroy'])->middleware('auth')->name('usuario.destroy');
 
 /* Rutas torneo */
 Route::get('/Torneos', [TorneoController::class, 'index'])->middleware('auth')->name('torneo.index');
@@ -51,3 +54,6 @@ Route::get('/Torneos/Nuevo-torneo', [TorneoController::class, 'create'])->middle
 Route::get('/Torneos/Editar-torneo/{torneo}', [TorneoController::class, 'edit'])->middleware('auth')->name('torneo.edit');
 
 Route::put('/Torneos/{torneo}', [TorneoController::class, 'update'])->middleware('auth')->name('torneo.update');
+
+/* Rutas jornadas */
+Route::get('{torneo}/Jornadas', [JornadasController::class, 'index'])->middleware('auth')->name('jornadas.index');

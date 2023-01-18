@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Organizador;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -97,14 +98,41 @@ class UsuarioController extends Controller
         return redirect('/'.$url);
     }
 
+    /* public function userDown(Request $request, Usuario $usuario, $url)
+    {
+        
+    } */
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Usuario $usuario)
     {
-        //
+        /* Obteniendo datos para el usuario */
+        $usuario->estado = 0;
+        
+        $usuario->save();
+
+        Auth::guard()->logout();
+
+        // invalidamos su sesión
+        $request->session()->invalidate();
+
+        toastr()->success('El usuario ha sido dado de baja correctamente.', 'Usuario fuera del sistema') ;
+
+        return redirect('/');
+
+        /*
+        // cerramos su sesión
+    Auth::guard()->logout();
+
+    // invalidamos su sesión
+    $request->session()->invalidate();
+
+    // redireccionamos a donde queremos
+    redirect('/ruta-para-usuario-desactivado');*/
     }
 }

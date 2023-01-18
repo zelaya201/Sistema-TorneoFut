@@ -16,8 +16,4 @@ class HomeController extends Controller
         return view('home.index', compact('torneo')); 
         //return $torneo;
     }
-
-   /*  public function competiciones() {
-        return view('torneo.torneo');
-    } */
 }

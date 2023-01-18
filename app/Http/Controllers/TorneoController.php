@@ -20,8 +20,10 @@ class TorneoController extends Controller
     public function index()
     {
         $torneos = Torneo::paginate();
-        $equipos = Equipo::all();
-     //   return $torneos;
+        $equipos = DB::select('SELECT * FROM equipos e WHERE NOT EXISTS (SELECT NULL
+                                FROM torneo_equipos te
+                                WHERE te.id_equipo = e.id)');
+
         return view('torneo.torneo', compact('torneos', 'equipos'));
     }
 

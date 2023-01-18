@@ -17,6 +17,7 @@ class Usuario extends Authenticatable
     protected $fillable = [
         'nickname',
         'id_organizador',
+        'estado',
     ];
 
     protected $hidden = [

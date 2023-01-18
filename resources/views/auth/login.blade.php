@@ -37,6 +37,13 @@
                   </button>
                   <label for="floatingPassword">Contraseña</label>
                 </div>
+                  @if (!empty($error))
+                  <ul>
+                      <li>{{$error}}</li>
+                  </ul>
+                    
+                  @endif
+
 
                 <button class="mt-4 mb-4 w-100 btn btn-lg btn-success" type="submit">Iniciar sesión</button>
 

@@ -46,7 +46,7 @@
                                 <div class="col-md-3">
                                     <li>
                                         <input type="checkbox" id="myCheckbox{{$equipo->id}}" value="{{$equipo->nombre}}" name="equipos[]" />
-                                        <label for="myCheckbox{{$equipo->id}}"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="{{$equipo->nombre}}"/></label> 
+                                        <label for="myCheckbox{{$equipo->id}}"><img src="{{asset($equipo->escudo)}}" alt="{{$equipo->nombre}}" class="img-fluid"/></label> 
                                     </li>
                                 </div>
                                 @endforeach                               

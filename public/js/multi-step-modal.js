@@ -12,7 +12,7 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Guardar torneo";
+    document.getElementById("nextBtn").innerHTML = "Guardar";
   } else {
     document.getElementById("nextBtn").innerHTML = "Siguiente";
   }
@@ -30,7 +30,7 @@ function nextPrev(n) {
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
   // if you have reached the end of the form...
-  if (currentTab >= x.length) {
+  if (currentTab == x.length) {
     // ... the form gets submitted:
     document.getElementById("signUpForm").submit();
     return false;
@@ -42,8 +42,8 @@ function nextPrev(n) {
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
-  x = document.getElementsByClassName("step");
-  y = x[currentTab].getElementsByTagName("input");
+  x = document.querySelectorAll("step");
+  //y = x[currentTab].getElementsByTagName("input");
   // A loop that checks every input field in the current tab:
   /* for (i = 0; i < y.length; i++) {
     // If a field is empty...
