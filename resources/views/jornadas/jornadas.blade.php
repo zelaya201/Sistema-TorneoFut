@@ -10,9 +10,9 @@
         <h3>Jornadas</h5>
       </div>
       <div class="col-md-2 mb-2 d-flex justify-content-end mt-3">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevoTorneoModal">
-          <i class="fa-solid fa-plus"></i>&nbsp;Nuevo torneo
-        </button>
+        <a href="" class="btn btn-primary">
+          Generar jornadas
+        </a>
       </div>
       <div class="row">
         <hr class="ms-3">

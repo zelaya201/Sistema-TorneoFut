@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       @foreach ($torneos as $torneo)
-      <div class="col-xl-4 col-sm-6 col-12 mb-4">
+      <div class="col-md-4 mb-4">
         <div class="card" data-bs-toggle="modal" data-bs-target="#infoTorneoModal-{{$torneo->id}}" style="cursor: pointer;">
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">

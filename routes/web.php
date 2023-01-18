@@ -57,3 +57,5 @@ Route::put('/Torneos/{torneo}', [TorneoController::class, 'update'])->middleware
 
 /* Rutas jornadas */
 Route::get('{torneo}/Jornadas', [JornadasController::class, 'index'])->middleware('auth')->name('jornadas.index');
+
+Route::get('{torneo}/Jornadas/Generar-jornada', [JornadasController::class, 'jornadas'])->middleware('auth')->name('jornadas.generar');  

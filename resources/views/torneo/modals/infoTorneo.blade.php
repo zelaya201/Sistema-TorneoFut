@@ -10,18 +10,6 @@
                 </div>
 
                 <div class="modal-body">
-                        
-                    <!-- <p class="text-start fw-light text-muted">Información del organizador</p>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <div class="form-floating">
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="">
-                                <label for="floatingInput">Nombre</label>
-                            </div>
-                        </div>
-                        
-                    </div> -->
-                    <p>{{$torneo->id}}</p>
                 </div>
 
                 <div class="modal-footer">
